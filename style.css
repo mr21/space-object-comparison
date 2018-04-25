@@ -1,0 +1,64 @@
+html, body {
+	height: 100%;
+}
+body {
+	overflow: hidden;
+	margin: 0;
+	background: #0c0c0f no-repeat center url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/ESO_-_The_Milky_Way_panorama_(by).jpg/1280px-ESO_-_The_Milky_Way_panorama_(by).jpg");
+	background-size: 100%;
+	transition-property: background-size;
+}
+body,
+.object {
+	transition-duration: .5s;
+}
+
+#main {
+	display: flex;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	padding: 16px;
+}
+#main.column {
+	flex-direction: column;
+}
+
+.page {
+	flex: 1;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.object {
+	position: relative;
+	box-sizing: border-box;
+	border-radius: 50%;
+	background: no-repeat center;
+	transition-property: width, height, background-color;
+}
+
+select {
+	position: absolute;
+	max-width: 100%;
+	bottom: 0;
+	color: #ddd;
+	border: 0;
+	border-radius: 2px;
+	padding: 8px;
+	background-color: rgba(0, 0, 0, .5);
+}
+option {
+	color: #aaa;
+	background-color: #050505;
+}
+option[value="sagittarius_astar"],
+option[value="sun"],
+option[value="jupiter"],
+option[value="earth"],
+option[value="moon"] {
+	color: #bbb;
+	background-color: #222;
+}
