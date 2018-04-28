@@ -71,6 +71,15 @@ select {
 	text-align-last: center;
 	text-overflow: ellipsis;
 }
+optgroup {
+	color: #555;
+	font-size: 12px;
+	background-color: #111;
+}
+optgroup,
+option {
+	padding: 4px 0;
+}
 option {
 	color: #aaa;
 	font-size: 14px;

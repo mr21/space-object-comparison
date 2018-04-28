@@ -6,13 +6,21 @@ const selects = document.querySelectorAll( "select" ),
 	pages = document.querySelectorAll( ".page" ),
 	sel0 = selects[ 0 ],
 	sel1 = selects[ 1 ],
-	options = Object.entries( Space ).map( ( [ key, obj ] ) => {
+	options = [];
+
+Object.entries( Space ).forEach( ( [ groupId, obj ] ) => {
+	const optgroup = document.createElement( "optgroup" );
+
+	optgroup.label = obj.name;
+	options.push( optgroup );
+	Object.entries( obj.objects ).forEach( ( [ objId, obj ] ) => {
 		const opt = document.createElement( "option" );
 
-		opt.value = key;
+		opt.value = `${ groupId }.${ objId }`;
 		opt.textContent = obj.name;
-		return opt;
+		optgroup.append( opt );
 	} );
+} );
 
 sel0.append.apply( sel0, options );
 sel1.append.apply( sel1, options.map( opt => opt.cloneNode( true ) ) );
@@ -28,8 +36,8 @@ sel1.onchange = () => {
 // onload
 // ............................................................................
 document.body.onload = () => {
-	sel0.value = "earth";
-	sel1.value = "moon";
+	sel0.value = "solarSystem.earth";
+	sel1.value = "solarSystem.moon";
 	document.body.onresize();
 	setPageObject( pages[ 0 ], sel0.value );
 	setPageObject( pages[ 1 ], sel1.value );
@@ -59,8 +67,8 @@ document.body.onresize = () => {
 };
 
 function calcDiameters() {
-	const a = Space[ sel0.value ],
-		b = Space[ sel1.value ],
+	const a = getObjectFromPath( sel0.value ),
+		b = getObjectFromPath( sel1.value ),
 		aBigger = a.diameter > b.diameter;
 
 	diameter0 = aBigger ? 1 : a.diameter / b.diameter;
@@ -68,8 +76,8 @@ function calcDiameters() {
 	resizeObjects();
 }
 
-function setPageObject( el, objectName ) {
-	const obj = Space[ objectName ];
+function setPageObject( el, objectPath ) {
+	const obj = getObjectFromPath( objectPath );
 
 	el.querySelector( ".object-aka" ).textContent = obj.aka;
 	el.querySelector( ".object-size" ).textContent = obj.diameter.toLocaleString();
@@ -78,14 +86,20 @@ function setPageObject( el, objectName ) {
 
 function resizeObjects() {
 	const
-		a = Space[ sel0.value ],
-		b = Space[ sel1.value ],
+		a = getObjectFromPath( sel0.value ),
+		b = getObjectFromPath( sel1.value ),
 		max = Math.max( a.diameter, b.diameter ),
 		bgSize = 130 - 20 * max / ( 1000 * 1000 * 1000 );
 
 	document.body.style.backgroundSize = bgSize + "%";
 	setObjectSize( objA.style, pageSize * diameter0 );
 	setObjectSize( objB.style, pageSize * diameter1 );
+}
+
+function getObjectFromPath( path ) {
+	const arr = path.split( "." );
+
+	return Space[ arr[ 0 ] ].objects[ arr[ 1 ] ];
 }
 
 function setObjectSize( st, px ) {
