@@ -28,9 +28,9 @@ const Space = {
 	kepler10System: {
 		name: "Kepler-10 System",
 		objects: {
-			kepler_10:  { name: "Kepler-10",  diameter: 740921, color: "#fff5f1", type: "yellow-dwarf-star" },
-			kepler_10c: { name: "Kepler-10c", diameter:  29944, color: "#f7f7f7", type: "rocky-planet" },
-			kepler_10b: { name: "Kepler-10b", diameter:  18731, color: "#f7f7f7", type: "rocky-planet" },
+			kepler_10:  { name: "Kepler-10",  diameter: 1481841, color: "#fff5f1", type: "yellow-dwarf-star" },
+			kepler_10c: { name: "Kepler-10c", diameter:   29944, color: "#f7f7f7", type: "rocky-planet" },
+			kepler_10b: { name: "Kepler-10b", diameter:   18731, color: "#f7f7f7", type: "rocky-planet" },
 		}
 	},
 	others: {
