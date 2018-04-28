@@ -3,10 +3,10 @@
 const Space = {
 	uy_scuti:          { name: "UY Scuty",                              diameter: 1189352136, color: "#ffe2c8", type: "red-supergiant-star" },
 	sagittarius_astar: { name: "Sagittarius A*",                        diameter:   88000000, color: "#000000", type: "black-hole" },
-	alpha_centauri_a:  { name: "α Centauri A",                          diameter:    1704918, color: "#fff5f1", type: "yellow-dwarf-star" },
+	alpha_centauri_a:  { name: "α Centauri A",                          diameter:    1701769, color: "#fff5f1", type: "yellow-dwarf-star" },
 	sun:               { name: "Sun",                                   diameter:    1391016, color: "#fff5f1", type: "yellow-dwarf-star" },
-	alpha_centauri_b:  { name: "α Centauri B",                          diameter:    1206368, color: "#ffe0bb", type: "yellow-dwarf-star" },
-	alpha_centauri_c:  { name: "α Centauri C", aka: "Proxima Centauri", diameter:     203113, color: "#ffbf68", type: "red-dwarf-star" },
+	alpha_centauri_b:  { name: "α Centauri B",                          diameter:    1200725, color: "#ffe0bb", type: "yellow-dwarf-star" },
+	alpha_centauri_c:  { name: "α Centauri C", aka: "Proxima Centauri", diameter:     214495, color: "#ffbf68", type: "red-dwarf-star" },
 	jupiter:    { name: "Jupiter",    diameter: 139822, color: "#a4906f", type: "gaz-planet" },
 	saturn:     { name: "Saturn",     diameter: 116464, color: "#e2cb84", type: "gaz-planet" },
 	uranus:     { name: "Uranus",     diameter:  50724, color: "#c1e7ea", type: "gaz-planet" },
