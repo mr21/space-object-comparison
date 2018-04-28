@@ -1,6 +1,12 @@
 "use strict";
 
 const Space = {
+	blackholes: {
+		name: "Black holes",
+		objects: {
+			sagittarius_astar: { name: "Sagittarius A*", diameter: 88000000, color: "#000000", type: "black-hole" },
+		}
+	},
 	solarSystem: {
 		name: "Solar system",
 		objects: {
@@ -43,14 +49,13 @@ const Space = {
 	others: {
 		name: "Others",
 		objects: {
-			uy_scuti:          { name: "UY Scuty",       diameter: 2376511200, color: "#ffe2c8", type: "red-supergiant-star" },
-			betelgeuse:        { name: "Betelgeuse",     diameter: 1234171800, color: "#fca653", type: "red-supergiant-star", aka: "α Orionis" },
-			antares:           { name: "Antares",        diameter:  946152000, color: "#fcaf29", type: "red-supergiant-star", aka: "α Scorpii" },
-			rigel_a:           { name: "Rigel A",        diameter:  109781460, color: "#bbf1ff", type: "blue-white-supergiant-star", aka: "β Orionis" },
-			sagittarius_astar: { name: "Sagittarius A*", diameter:   88000000, color: "#000000", type: "black-hole" },
-			aldebaran:         { name: "Aldebaran",      diameter:   61402482, color: "#fc8d2e", type: "orange-giant-star", aka: "α Tauri" },
-			arcturus:          { name: "Arcturus",       diameter:   35341560, color: "#df822d", type: "red-giant-star", aka: "α Boötis" },
-			pollux:            { name: "Pollux",         diameter:   12244320, color: "#eabf80", type: "orange-giant-star", aka: "β Geminorum" },
+			uy_scuti:   { name: "UY Scuty",   diameter: 2376511200, color: "#ffe2c8", type: "red-supergiant-star" },
+			betelgeuse: { name: "Betelgeuse", diameter: 1234171800, color: "#fca653", type: "red-supergiant-star", aka: "α Orionis" },
+			antares:    { name: "Antares",    diameter:  946152000, color: "#fcaf29", type: "red-supergiant-star", aka: "α Scorpii" },
+			rigel_a:    { name: "Rigel A",    diameter:  109781460, color: "#bbf1ff", type: "blue-white-supergiant-star", aka: "β Orionis" },
+			aldebaran:  { name: "Aldebaran",  diameter:   61402482, color: "#fc8d2e", type: "orange-giant-star", aka: "α Tauri" },
+			arcturus:   { name: "Arcturus",   diameter:   35341560, color: "#df822d", type: "red-giant-star", aka: "α Boötis" },
+			pollux:     { name: "Pollux",     diameter:   12244320, color: "#eabf80", type: "orange-giant-star", aka: "β Geminorum" },
 		}
 	},
 };
