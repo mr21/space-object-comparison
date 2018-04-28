@@ -4,13 +4,17 @@ html, body {
 body {
 	overflow: hidden;
 	margin: 0;
-	background: #0c0c0f no-repeat center url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/ESO_-_The_Milky_Way_panorama_(by).jpg/1280px-ESO_-_The_Milky_Way_panorama_(by).jpg");
+	background: #0c0c0f no-repeat center url("milky-way.jpg");
 	background-size: 100%;
 	transition-property: background-size;
 }
 body,
 .object {
 	transition-duration: .5s;
+}
+
+body.hd {
+	background-image: url("milky-way-hd.jpg");
 }
 
 #main {
