@@ -3,31 +3,37 @@
 // <select>
 // ............................................................................
 const selects = document.querySelectorAll( "select" ),
+	pages = document.querySelectorAll( ".page" ),
 	sel0 = selects[ 0 ],
 	sel1 = selects[ 1 ],
-	options = Object.entries( Objects ).map( ( [ key, obj ] ) => {
+	options = Object.entries( Space ).map( ( [ key, obj ] ) => {
 		const opt = document.createElement( "option" );
 
 		opt.value = key;
-		opt.textContent = `${ obj.type } : ${ obj.name } - (${ obj.diameter.toLocaleString() } km)`;
+		opt.textContent = obj.name;
 		return opt;
 	} );
 
 sel0.append.apply( sel0, options );
 sel1.append.apply( sel1, options.map( opt => opt.cloneNode( true ) ) );
-sel0.onchange =
-sel1.onchange = () => {
-	setPair( sel0.value, sel1.value );
+sel0.onchange = () => {
+	setPageObject( pages[ 0 ], sel0.value );
+	calcDiameters();
 };
-
-sel0.value = "earth";
-sel1.value = "moon";
+sel1.onchange = () => {
+	setPageObject( pages[ 1 ], sel1.value );
+	calcDiameters();
+};
 
 // onload
 // ............................................................................
 document.body.onload = () => {
+	sel0.value = "earth";
+	sel1.value = "moon";
 	document.body.onresize();
-	sel0.onchange();
+	setPageObject( pages[ 0 ], sel0.value );
+	setPageObject( pages[ 1 ], sel1.value );
+	calcDiameters();
 };
 
 // onresize
@@ -52,33 +58,43 @@ document.body.onresize = () => {
 	}
 };
 
-function setPair( aName, bName ) {
-	const
-		a = Objects[ aName ],
-		b = Objects[ bName ],
-		max = Math.max( a.diameter, b.diameter ),
-		aBigger = a.diameter > b.diameter,
-		bgSize = 120 - 20 * max / ( 1000 * 1000 * 1000 );
+function calcDiameters() {
+	const a = Space[ sel0.value ],
+		b = Space[ sel1.value ],
+		aBigger = a.diameter > b.diameter;
 
-	document.body.style.backgroundSize = bgSize + "%";
 	diameter0 = aBigger ? 1 : a.diameter / b.diameter;
 	diameter1 = !aBigger ? 1 : b.diameter / a.diameter;
-	setBackground( objA, a );
-	setBackground( objB, b );
 	resizeObjects();
 }
 
-function resizeObjects() {
-	setSize( objA.style, pageSize * diameter0 );
-	setSize( objB.style, pageSize * diameter1 );
+function setPageObject( el, objectName ) {
+	const obj = Space[ objectName ];
+
+	el.querySelector( ".object-aka" ).textContent = obj.aka;
+	el.querySelector( ".object-size" ).textContent = obj.diameter.toLocaleString();
+	setObjectBg( el.querySelector( ".object" ), obj );
 }
 
-function setSize( st, px ) {
-	st.width = st.height = px + "px";
+function resizeObjects() {
+	const
+		a = Space[ sel0.value ],
+		b = Space[ sel1.value ],
+		max = Math.max( a.diameter, b.diameter ),
+		bgSize = 130 - 20 * max / ( 1000 * 1000 * 1000 );
+
+	document.body.style.backgroundSize = bgSize + "%";
+	setObjectSize( objA.style, pageSize * diameter0 );
+	setObjectSize( objB.style, pageSize * diameter1 );
+}
+
+function setObjectSize( st, px ) {
+	st.width =
+	st.height = px + "px";
 	st.margin = px / -2 + "px";
 }
 
-function setBackground( el, obj ) {
+function setObjectBg( el, obj ) {
 	const st = el.style;
 
 	el.dataset.type = obj.type;

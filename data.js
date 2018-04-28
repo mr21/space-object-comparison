@@ -1,6 +1,6 @@
 "use strict";
 
-const Objects = {
+const Space = {
 	uy_scuti:          { name: "UY Scuty",                              diameter: 1189352136, color: "#ffe2c8", type: "red-supergiant-star" },
 	sagittarius_astar: { name: "Sagittarius A*",                        diameter:   88000000, color: "#000000", type: "black-hole" },
 	alpha_centauri_a:  { name: "α Centauri A",                          diameter:    1704918, color: "#fff5f1", type: "yellow-dwarf-star" },

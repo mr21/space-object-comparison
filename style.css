@@ -4,13 +4,14 @@ html, body {
 body {
 	overflow: hidden;
 	margin: 0;
+	font-family: sans-serif;
 	background: #0c0c0f no-repeat center url("milky-way.jpg");
 	background-size: 100%;
 	transition-property: background-size;
 }
 body,
 .object {
-	transition-duration: .5s;
+	transition-duration: 1s;
 }
 
 body.hd {
@@ -30,32 +31,49 @@ body.hd {
 
 .page {
 	flex: 1;
-	position: relative;
 	display: flex;
+	flex-direction: column;
+	position: relative;
 	align-items: center;
-	justify-content: center;
+	font-size: 18px;
+	color: #ddd;
 }
 
 .object {
-	position: relative;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	margin: 0;
 	box-sizing: border-box;
 	border-radius: 50%;
 	background: no-repeat center;
-	transition-property: width, height, background-color;
+	transition-property: width, height, margin, background-color;
+}
+
+select,
+.object-aka,
+.object-size {
+	z-index: 1;
+	padding: 8px;
+	border-radius: 2px;
+	background-color: rgba(0, 0, 0, .5);
 }
 
 select {
-	position: absolute;
+	z-index: 1;
 	max-width: 100%;
-	bottom: 0;
 	color: #ddd;
 	border: 0;
-	border-radius: 2px;
-	padding: 8px;
-	background-color: rgba(0, 0, 0, .5);
+	font-size: 48px;
+	text-align: center;
+	text-align-last: center;
+	text-overflow: ellipsis;
 }
 option {
 	color: #aaa;
+	font-size: 14px;
 	background-color: #050505;
 }
 option[value="sagittarius_astar"],
@@ -65,4 +83,34 @@ option[value="earth"],
 option[value="moon"] {
 	color: #bbb;
 	background-color: #222;
+}
+.object-aka,
+.object-size {
+	margin: 10px 0;
+}
+.object-aka {
+	font-style: italic;
+}
+
+.object-aka:empty {
+	display: none;
+}
+
+.object-aka:not(:empty)::before,
+.object-size::before,
+.object-size::after {
+	content: "alias\A0:\A0";
+	font-size: 11px;
+	font-style: normal;
+	font-weight: bold;
+	opacity: .5;
+}
+.object-size {
+	font-weight: bold;
+}
+.object-size::before {
+	content: "diameter\A0:\A0";
+}
+.object-size::after {
+	content: "\A0km";
 }
