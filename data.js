@@ -26,18 +26,31 @@ const Space = {
 		}
 	},
 	kepler10System: {
-		name: "Kepler-10 System",
+		name: "Kepler-10 system",
 		objects: {
 			kepler_10:  { name: "Kepler-10",  diameter: 1481841, color: "#fff5f1", type: "yellow-dwarf-star" },
 			kepler_10c: { name: "Kepler-10c", diameter:   29944, color: "#f7f7f7", type: "rocky-planet" },
 			kepler_10b: { name: "Kepler-10b", diameter:   18731, color: "#f7f7f7", type: "rocky-planet" },
 		}
 	},
+	siriusSystem: {
+		name: "Sirius system",
+		objects: {
+			sirius_a: { name: "Sirius A", diameter: 2380685, color: "#eeeefa", type: "am-star", aka: "Dog Star" },
+			sirius_b: { name: "Sirius B", diameter:   11688, color: "#d5dff5", type: "white-dwarf-star" },
+		}
+	},
 	others: {
 		name: "Others",
 		objects: {
-			uy_scuti:          { name: "UY Scuty",       diameter: 1189352136, color: "#ffe2c8", type: "red-supergiant-star" },
+			uy_scuti:          { name: "UY Scuty",       diameter: 2376511200, color: "#ffe2c8", type: "red-supergiant-star" },
+			betelgeuse:        { name: "Betelgeuse",     diameter: 1234171800, color: "#fca653", type: "red-supergiant-star", aka: "α Orionis" },
+			antares:           { name: "Antares",        diameter:  946152000, color: "#fcaf29", type: "red-supergiant-star", aka: "α Scorpii" },
+			rigel_a:           { name: "Rigel A",        diameter:  109781460, color: "#bbf1ff", type: "blue-white-supergiant-star", aka: "β Orionis" },
 			sagittarius_astar: { name: "Sagittarius A*", diameter:   88000000, color: "#000000", type: "black-hole" },
+			aldebaran:         { name: "Aldebaran",      diameter:   61402482, color: "#fc8d2e", type: "orange-giant-star", aka: "α Tauri" },
+			arcturus:          { name: "Arcturus",       diameter:   35341560, color: "#df822d", type: "red-giant-star", aka: "α Boötis" },
+			pollux:            { name: "Pollux",         diameter:   12244320, color: "#eabf80", type: "orange-giant-star", aka: "β Geminorum" },
 		}
 	},
 };
