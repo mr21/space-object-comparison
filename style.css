@@ -11,7 +11,7 @@ body {
 }
 body,
 .object {
-	transition-duration: 1s;
+	transition-duration: .5s;
 }
 
 body.hd {
@@ -48,7 +48,7 @@ body.hd {
 	margin: 0;
 	box-sizing: border-box;
 	border-radius: 50%;
-	background: no-repeat center;
+	background: no-repeat center #000;
 	transition-property: width, height, margin, background-color;
 }
 
