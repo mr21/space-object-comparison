@@ -47,6 +47,7 @@ document.body.onload = () => {
 // onresize
 // ............................................................................
 const elMain = document.querySelector( "#main" ),
+	milkyway = document.querySelector( "#milkyway" ),
 	page0 = document.querySelector( ".page" ),
 	spaceObjects = document.querySelectorAll( "#main .object" ),
 	objA = spaceObjects[ 0 ],
@@ -89,9 +90,9 @@ function resizeObjects() {
 		a = getObjectFromPath( sel0.value ),
 		b = getObjectFromPath( sel1.value ),
 		max = Math.max( a.diameter, b.diameter ),
-		bgSize = 130 - 20 * max / ( 1000 * 1000 * 1000 );
+		bgSize = 1.15 - .15 * max / ( 1000 * 1000 * 1000 );
 
-	document.body.style.backgroundSize = bgSize + "%";
+	milkyway.style.transform = `scale(${ bgSize })`;
 	setObjectSize( objA.style, pageSize * diameter0 );
 	setObjectSize( objB.style, pageSize * diameter1 );
 }
