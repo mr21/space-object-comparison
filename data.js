@@ -1,10 +1,27 @@
 "use strict";
 
+const lightSpeed = 299792458; // meter (per second)
+const solarMass = 1.98855 * Math.pow( 10, 30 ); // kilograms
+const gravity = 6.67408 * Math.pow( 10, -11 );
+
+function calcSchwarzschildRadius( nbSolarMass ) {
+	return ( 2 * gravity * nbSolarMass * solarMass ) / ( lightSpeed * lightSpeed );
+}
+
 const Space = {
 	blackholes: {
 		name: "Black holes",
 		objects: {
-			sagittarius_astar: { name: "Sagittarius A*", diameter: 88000000, color: "#000000", type: "black-hole" },
+			ton_618:           { name: "TON 618",         nbSolarMass: 66000000000, color: "#000000", type: "black-hole" },
+			h1821_643:         { name: "H1821+643",       nbSolarMass: 30000000000, color: "#000000", type: "black-hole" },
+			hercules_a:        { name: "Hercules A",      nbSolarMass:  4000000000, color: "#000000", type: "black-hole" },
+			ngc_3115:          { name: "NGC 3115",        nbSolarMass:  2000000000, color: "#000000", type: "black-hole" },
+			messier_84:        { name: "Messier 84",      nbSolarMass:  1500000000, color: "#000000", type: "black-hole" },
+			sombrero_galaxy:   { name: "Sombrero Galaxy", nbSolarMass:  1000000000, color: "#000000", type: "black-hole" },
+			messier_49:        { name: "Messier 49",      nbSolarMass:   560000000, color: "#000000", type: "black-hole" },
+			messier_59:        { name: "Messier 59",      nbSolarMass:   270000000, color: "#000000", type: "black-hole" },
+			messier_81:        { name: "Messier 81",      nbSolarMass:    70000000, color: "#000000", type: "black-hole", aka: "Bode's Galaxy" },
+			sagittarius_astar: { name: "Sagittarius A*",  nbSolarMass:     4300000, color: "#000000", type: "black-hole", aka: "Sgr A*" },
 		}
 	},
 	solarSystem: {
@@ -59,3 +76,7 @@ const Space = {
 		}
 	},
 };
+
+Object.values( Space.blackholes.objects ).forEach( bh => {
+	bh.diameter = Math.round( 2 * calcSchwarzschildRadius( bh.nbSolarMass ) / 1000 );
+} );

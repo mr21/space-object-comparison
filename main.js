@@ -90,7 +90,7 @@ function resizeObjects() {
 		a = getObjectFromPath( sel0.value ),
 		b = getObjectFromPath( sel1.value ),
 		max = Math.max( a.diameter, b.diameter ),
-		bgSize = 1.1 - .1 * max / ( 1000 * 1000 * 1000 );
+		bgSize = 1.1 - .0015 * max / ( 1000 * 1000 * 1000 );
 
 	milkyway.style.transform = `scale(${ bgSize })`;
 	setObjectSize( objA.style, pageSize * diameter0 );
