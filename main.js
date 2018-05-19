@@ -5,11 +5,15 @@
 window.onhashchange = () => {
 	const names = getHashArr();
 
-	sel0.value = names[ 0 ];
-	sel1.value = names[ 1 ];
-	setPageObject( pages[ 0 ], sel0.value );
-	setPageObject( pages[ 1 ], sel1.value );
-	calcDiameters();
+	if ( names.length < 2 ) {
+		location.hash = "earth,moon";
+	} else {
+		sel0.value = names[ 0 ];
+		sel1.value = names[ 1 ];
+		setPageObject( pages[ 0 ], sel0.value );
+		setPageObject( pages[ 1 ], sel1.value );
+		calcDiameters();
+	}
 };
 
 function getHashArr() {
@@ -82,22 +86,19 @@ document.body.onresize = () => {
 	elMain.classList.remove( "row", "column" );
 	elMain.classList.add( dir );
 	pageSize = page0.getBoundingClientRect()[ dir === "row" ? "width" : "height" ];
-	if ( diameter0 ) {
-		resizeObjects();
-	}
+	resizeObjects();
 };
 
 function getDiameter( obj ) {
-	return obj ? obj.diameter : 1;
+	return obj ? obj.diameter : 0;
 }
 
 function calcDiameters() {
 	const a = getDiameter( ObjectByName[ sel0.value ] ),
-		b = getDiameter( ObjectByName[ sel1.value ] ),
-		aBigger = a > b;
+		b = getDiameter( ObjectByName[ sel1.value ] );
 
-	diameter0 = aBigger ? 1 : a / b;
-	diameter1 = !aBigger ? 1 : b / a;
+	diameter0 = a < 1 ? 0 : a > b ? 1 : a / b;
+	diameter1 = b < 1 ? 0 : a < b ? 1 : b / a;
 	resizeObjects();
 }
 
