@@ -42,24 +42,18 @@ Object.values( Space ).forEach( obj => {
 	} );
 } );
 
+function selectOnchange( i, e ) {
+	const arr = getHashArr();
+
+	arr[ i ] = e.target.value;
+	location.hash = arr.join( "," );
+};
+
 sel0.append.apply( sel0, options );
 sel1.append.apply( sel1, options.map( opt => opt.cloneNode( true ) ) );
-sel0.onchange = () => {
-	const arr = getHashArr();
+sel0.onchange = selectOnchange.bind( null, 0 );
+sel1.onchange = selectOnchange.bind( null, 1 );
 
-	arr[ 0 ] = sel0.value;
-	location.hash = arr.join( "," );
-	setPageObject( pages[ 0 ], sel0.value );
-	calcDiameters();
-};
-sel1.onchange = () => {
-	const arr = getHashArr();
-
-	arr[ 1 ] = sel1.value;
-	location.hash = arr.join( "," );
-	setPageObject( pages[ 1 ], sel1.value );
-	calcDiameters();
-};
 
 // onload
 // ............................................................................
