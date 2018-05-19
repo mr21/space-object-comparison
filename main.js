@@ -1,5 +1,21 @@
 "use strict";
 
+// onhashchange
+// ............................................................................
+window.onhashchange = () => {
+	const names = getHashArr();
+
+	sel0.value = names[ 0 ];
+	sel1.value = names[ 1 ];
+	setPageObject( pages[ 0 ], sel0.value );
+	setPageObject( pages[ 1 ], sel1.value );
+	calcDiameters();
+};
+
+function getHashArr() {
+	return location.hash.substr( 1 ).split( "," );
+}
+
 // <select>
 // ............................................................................
 const selects = document.querySelectorAll( "select" ),
@@ -8,7 +24,7 @@ const selects = document.querySelectorAll( "select" ),
 	sel1 = selects[ 1 ],
 	options = [];
 
-Object.entries( Space ).forEach( ( [ groupId, obj ] ) => {
+Object.values( Space ).forEach( obj => {
 	const optgroup = document.createElement( "optgroup" );
 
 	optgroup.label = obj.name;
@@ -16,7 +32,7 @@ Object.entries( Space ).forEach( ( [ groupId, obj ] ) => {
 	Object.entries( obj.objects ).forEach( ( [ objId, obj ] ) => {
 		const opt = document.createElement( "option" );
 
-		opt.value = `${ groupId }.${ objId }`;
+		opt.value = objId;
 		opt.textContent = obj.name;
 		optgroup.append( opt );
 	} );
@@ -25,10 +41,18 @@ Object.entries( Space ).forEach( ( [ groupId, obj ] ) => {
 sel0.append.apply( sel0, options );
 sel1.append.apply( sel1, options.map( opt => opt.cloneNode( true ) ) );
 sel0.onchange = () => {
+	const arr = getHashArr();
+
+	arr[ 0 ] = sel0.value;
+	location.hash = arr.join( "," );
 	setPageObject( pages[ 0 ], sel0.value );
 	calcDiameters();
 };
 sel1.onchange = () => {
+	const arr = getHashArr();
+
+	arr[ 1 ] = sel1.value;
+	location.hash = arr.join( "," );
 	setPageObject( pages[ 1 ], sel1.value );
 	calcDiameters();
 };
@@ -36,12 +60,8 @@ sel1.onchange = () => {
 // onload
 // ............................................................................
 document.body.onload = () => {
-	sel0.value = "solarSystem.earth";
-	sel1.value = "solarSystem.moon";
 	document.body.onresize();
-	setPageObject( pages[ 0 ], sel0.value );
-	setPageObject( pages[ 1 ], sel1.value );
-	calcDiameters();
+	window.onhashchange();
 };
 
 // onresize
@@ -67,40 +87,44 @@ document.body.onresize = () => {
 	}
 };
 
-function calcDiameters() {
-	const a = getObjectFromPath( sel0.value ),
-		b = getObjectFromPath( sel1.value ),
-		aBigger = a.diameter > b.diameter;
+function getDiameter( obj ) {
+	return obj ? obj.diameter : 1;
+}
 
-	diameter0 = aBigger ? 1 : a.diameter / b.diameter;
-	diameter1 = !aBigger ? 1 : b.diameter / a.diameter;
+function calcDiameters() {
+	const a = getDiameter( ObjectByName[ sel0.value ] ),
+		b = getDiameter( ObjectByName[ sel1.value ] ),
+		aBigger = a > b;
+
+	diameter0 = aBigger ? 1 : a / b;
+	diameter1 = !aBigger ? 1 : b / a;
 	resizeObjects();
 }
 
 function setPageObject( el, objectPath ) {
-	const obj = getObjectFromPath( objectPath );
+	const obj = ObjectByName[ objectPath ],
+		aka = el.querySelector( ".object-aka" ),
+		size = el.querySelector( ".object-size" );
 
-	el.querySelector( ".object-aka" ).textContent = obj.aka;
-	el.querySelector( ".object-size" ).textContent = obj.diameter.toLocaleString();
-	setObjectBg( el.querySelector( ".object" ), obj );
+	if ( obj ) {
+		aka.textContent = obj.aka;
+		size.textContent = obj.diameter.toLocaleString();
+		setObjectBg( el.querySelector( ".object" ), obj );
+	} else {
+		aka.textContent =
+		size.textContent = "";
+	}
 }
 
 function resizeObjects() {
-	const
-		a = getObjectFromPath( sel0.value ),
-		b = getObjectFromPath( sel1.value ),
-		max = Math.max( a.diameter, b.diameter ),
+	const a = getDiameter( ObjectByName[ sel0.value ] ),
+		b = getDiameter( ObjectByName[ sel1.value ] ),
+		max = Math.max( a, b ),
 		bgSize = 1.1 - .0015 * max / ( 1000 * 1000 * 1000 );
 
 	milkyway.style.transform = `scale(${ bgSize })`;
 	setObjectSize( objA.style, pageSize * diameter0 );
 	setObjectSize( objB.style, pageSize * diameter1 );
-}
-
-function getObjectFromPath( path ) {
-	const arr = path.split( "." );
-
-	return Space[ arr[ 0 ] ].objects[ arr[ 1 ] ];
 }
 
 function setObjectSize( st, px ) {

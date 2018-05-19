@@ -112,11 +112,12 @@ option[value="moon"] {
 	font-style: italic;
 }
 
-.object-aka:empty {
+.object-aka:empty,
+.object-size:empty {
 	display: none;
 }
 
-.object-aka:not(:empty)::before,
+.object-aka::before,
 .object-size::before,
 .object-size::after {
 	content: "alias\A0:\A0";
