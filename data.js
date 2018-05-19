@@ -77,6 +77,13 @@ const Space = {
 	},
 };
 
+const ObjectByName =
+	Object.values( Space ).reduce( ( obj, cate ) => (
+		Object.entries( cate.objects ).reduce(
+			( obj, [ id, spaceObj ] ) => ( ( obj[ id ] = spaceObj ), obj ),
+			obj )
+	), {} );
+
 Object.values( Space.blackholes.objects ).forEach( bh => {
 	bh.diameter = Math.round( 2 * calcSchwarzschildRadius( bh.nbSolarMass ) / 1000 );
 } );
