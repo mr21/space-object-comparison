@@ -66,7 +66,7 @@ const Space = {
 	others: {
 		name: "Others",
 		objects: {
-			uy_scuti:   { name: "UY Scuty",   diameter: 2376511200, color: "#ffe2c8", type: "red-supergiant-star" },
+			uy_scuti:   { name: "UY Scuti",   diameter: 2376511200, color: "#ffe2c8", type: "red-supergiant-star" },
 			betelgeuse: { name: "Betelgeuse", diameter: 1234171800, color: "#fca653", type: "red-supergiant-star", aka: "α Orionis" },
 			antares:    { name: "Antares",    diameter:  946152000, color: "#fcaf29", type: "red-supergiant-star", aka: "α Scorpii" },
 			rigel_a:    { name: "Rigel A",    diameter:  109781460, color: "#bbf1ff", type: "blue-white-supergiant-star", aka: "β Orionis" },
