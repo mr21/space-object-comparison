@@ -133,17 +133,10 @@ function setObjectBg( el, obj ) {
 
 	el.dataset.type = obj.type;
 	st.backgroundColor = obj.color;
-	if ( obj.img ) {
-		st.backgroundImage = `url("${ obj.img }")`;
-		st.backgroundSize = obj.imgSize + "%";
-	}
+	st.backgroundImage = obj.img
+		? `url("${ obj.img }")`
+		: "none";
+	st.boxShadow = obj.type.indexOf( "star" ) >= 0
+		? `0px 0px 100px ${ obj.color }`
+		: "none";
 }
-
-/*
-	img: "http://imgsrc.hubblesite.org/hvi/uploads/image_file/image_attachment/25853/large_web.jpg",
-	imgSize: 128,
-	img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/767px-The_Earth_seen_from_Apollo_17.jpg",
-	imgSize: 114,
-	img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/808px-FullMoon2010.jpg",
-	imgSize: 124,
-*/
