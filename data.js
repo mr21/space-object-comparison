@@ -27,17 +27,17 @@ const Space = {
 	solarSystem: {
 		name: "Solar system",
 		objects: {
-			sun:     { name: "\u2609 Sun",     diameter: 1391016, color: "#fff5f1", type: "yellow-dwarf-star" },
-			jupiter: { name: "\u2643 Jupiter", diameter:  139822, color: "#a4906f", type: "gaz-planet" },
-			saturn:  { name: "\u2644 Saturn",  diameter:  116464, color: "#e2cb84", type: "gaz-planet" },
+			sun:     { name: "\u2609 Sun",     diameter: 1391016, color: "#fff5f1", type: "yellow-dwarf-star", img: "low/sun.jpg" },
+			jupiter: { name: "\u2643 Jupiter", diameter:  139822, color: "#a4906f", type: "gaz-planet", img: "low/jupiter.jpg" },
+			saturn:  { name: "\u2644 Saturn",  diameter:  116464, color: "#e2cb84", type: "gaz-planet", img: "low/saturn.jpg" },
 			uranus:  { name: "\u2645 Uranus",  diameter:   50724, color: "#c1e7ea", type: "gaz-planet" },
-			neptune: { name: "\u2646 Neptune", diameter:   49244, color: "#3d66fa", type: "gaz-planet" },
-			earth:   { name: "\u2295 Earth",   diameter:   12742, color: "#2c3789", type: "rocky-planet" },
-			venus:   { name: "\u2640 Venus",   diameter:   12104, color: "#d79f3c", type: "rocky-planet" },
-			mars:    { name: "\u2643 Mars",    diameter:    6779, color: "#ee7f5a", type: "rocky-planet" },
-			mercury: { name: "\u263F Mercury", diameter:    4879, color: "#828086", type: "iron-planet" },
-			moon:    { name: "\u263E Moon",    diameter:    3474, color: "#7f7978", type: "satellite" },
-			pluto:   { name: "\u2647 Pluto",   diameter:    2377, color: "#866143", type: "dwarf-planet" },
+			neptune: { name: "\u2646 Neptune", diameter:   49244, color: "#3d66fa", type: "gaz-planet", img: "low/neptune.jpg" },
+			earth:   { name: "\u2295 Earth",   diameter:   12742, color: "#2c3789", type: "rocky-planet", img: "low/earth.jpg" },
+			venus:   { name: "\u2640 Venus",   diameter:   12104, color: "#d79f3c", type: "rocky-planet", img: "low/venus.jpg" },
+			mars:    { name: "\u2643 Mars",    diameter:    6779, color: "#ee7f5a", type: "rocky-planet", img: "low/mars.jpg" },
+			mercury: { name: "\u263F Mercury", diameter:    4879, color: "#828086", type: "iron-planet", img: "low/mercury.jpg" },
+			moon:    { name: "\u263E Moon",    diameter:    3474, color: "#7f7978", type: "satellite", img: "low/moon.jpg" },
+			pluto:   { name: "\u2647 Pluto",   diameter:    2377, color: "#866143", type: "dwarf-planet", img: "low/pluto.jpg" },
 		}
 	},
 	alphaCentauri: {

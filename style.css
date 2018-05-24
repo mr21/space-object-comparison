@@ -60,6 +60,7 @@ body.hd #milkyway {
 	box-sizing: border-box;
 	border-radius: 50%;
 	background: no-repeat center #000;
+	background-size: cover;
 	transition-property: width, height, margin, background-color;
 }
 
