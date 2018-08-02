@@ -23,12 +23,12 @@ function getHashArr() {
 // shape mode
 // ............................................................................
 const elMain = document.querySelector( "#main" ),
-	shapeMode = document.querySelector( "#shapeMode" );
+	toggleTextures = document.querySelector( "#toggleTextures" );
 
-shapeMode.onchange = () => {
-	elMain.classList.toggle( "shapeMode", shapeMode.checked );
+toggleTextures.onchange = () => {
+	elMain.classList.toggle( "no-texture", !toggleTextures.checked );
 };
-shapeMode.onchange();
+toggleTextures.onchange();
 
 // <select>
 // ............................................................................

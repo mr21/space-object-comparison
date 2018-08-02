@@ -9,16 +9,16 @@ body {
 	background-color: #000;
 }
 
-#shapeModeWrap {
+#toggleTexturesWrap {
 	position: absolute;
 	z-index: 1;
 	bottom: 1em;
 }
-.shapeMode #milkyway,
-.shapeMode .object {
+.no-texture #milkyway,
+.no-texture .object {
 	background-image: none !important;
 }
-.shapeMode .object {
+.no-texture .object {
 	background-color: #888 !important;
 	box-shadow: none !important;
 }
