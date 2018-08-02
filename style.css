@@ -5,8 +5,24 @@ body {
 	overflow: hidden;
 	margin: 0;
 	font-family: sans-serif;
+	color: #ddd;
 	background-color: #000;
 }
+
+#shapeModeWrap {
+	position: absolute;
+	z-index: 1;
+	bottom: 1em;
+}
+.shapeMode #milkyway,
+.shapeMode .object {
+	background-image: none !important;
+}
+.shapeMode .object {
+	background-color: #888 !important;
+	box-shadow: none !important;
+}
+
 #milkyway,
 .object {
 	transition-duration: .5s;
@@ -76,7 +92,7 @@ select,
 select {
 	z-index: 1;
 	max-width: 100%;
-	color: #ddd;
+	color: inherit;
 	border: 0;
 	font-size: 30px;
 	text-align: center;

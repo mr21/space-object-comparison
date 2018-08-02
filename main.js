@@ -20,6 +20,16 @@ function getHashArr() {
 	return location.hash.substr( 1 ).split( "," );
 }
 
+// shape mode
+// ............................................................................
+const elMain = document.querySelector( "#main" ),
+	shapeMode = document.querySelector( "#shapeMode" );
+
+shapeMode.onchange = () => {
+	elMain.classList.toggle( "shapeMode", shapeMode.checked );
+};
+shapeMode.onchange();
+
 // <select>
 // ............................................................................
 const selects = document.querySelectorAll( "select" ),
@@ -64,8 +74,7 @@ document.body.onload = () => {
 
 // onresize
 // ............................................................................
-const elMain = document.querySelector( "#main" ),
-	milkyway = document.querySelector( "#milkyway" ),
+const milkyway = document.querySelector( "#milkyway" ),
 	page0 = document.querySelector( ".page" ),
 	spaceObjects = document.querySelectorAll( "#main .object" ),
 	objA = spaceObjects[ 0 ],
