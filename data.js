@@ -47,6 +47,7 @@ const Space = {
 			rhea:      { name: "Rhea (Saturn's moon)",      diameter:    1528, color: "#b2b2b2", type: "satellite", hasImg: true },
 			oberon:    { name: "Oberon (Uranus's moon)",    diameter:    1523, color: "#ae9b94", type: "satellite", hasImg: true },
 			iapetus:   { name: "Iapetus (Saturn's moon)",   diameter:    1469, color: "#c3c1b2", type: "satellite", hasImg: true },
+			triton:    { name: "Triton (Neptune's moon)",   diameter:    1353, color: "#aea5a6", type: "satellite", hasImg: true },
 			umbriel:   { name: "Umbriel (Uranus's moon)",   diameter:    1169, color: "#3d3d3d", type: "satellite", hasImg: true },
 			ariel:     { name: "Ariel (Uranus's moon)",     diameter:    1158, color: "#b6b6b6", type: "satellite", hasImg: true },
 			dione:     { name: "Dione (Saturn's moon)",     diameter:    1123, color: "#c1c1c1", type: "satellite", hasImg: true },
