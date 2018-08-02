@@ -133,8 +133,8 @@ function setObjectBg( el, obj ) {
 
 	el.dataset.type = obj.type;
 	st.backgroundColor = obj.color;
-	st.backgroundImage = obj.img
-		? `url("${ obj.img }")`
+	st.backgroundImage = obj.hasImg
+		? `url("low/${ obj.id }.jpg")`
 		: "none";
 	st.boxShadow = obj.type.indexOf( "star" ) >= 0
 		? `0px 0px 100px ${ obj.color }`
